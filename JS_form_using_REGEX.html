@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<h1 class="bg-dark text-center text-white">JavaScript Form Validation</h1>
+	<div class="container">
+		<br>
+		<form onsubmit="return myFun()">  
+			<div class="form-group">
+				<label for="">Username</label>
+				<input type="text" name="username" id="user" class="form-control">
+				<span id="userror" class="text-danger font-weight-bold"></span>
+			</div>
+
+			<div class="form-group">
+				<label for="">New Password</label>
+				<input type="password" name="password" id="pass" class="form-control">
+				<span id="passerror" class="text-danger font-weight-bold"></span>
+			</div>
+
+			<div class="form-group">
+				<label for="">Confirm Password</label>
+				<input type="password" name="cpassword" id="cpass" class="form-control">
+				<span id="cpasserror" class="text-danger font-weight-bold"></span>
+			</div>
+
+			<div class="form-group">
+				<label for="">Email Id</label>
+				<input type="email" name="email" id="email" class="form-control">
+				<span id="emailerror" class="text-danger font-weight-bold"></span>
+			</div>
+
+			<div class="form-group">
+				<label for="">Mobile No.</label>
+				<input type="number" name="mob" id="mobile" class="form-control">
+				<span id="moberror" class="text-danger font-weight-bold"></span>
+			</div>
+
+			<input type="submit" name="" class="btn btn-success">
+
+		</form>
+	</div>
+
+<script>
+	
+	function myFun(){
+
+			var us = document.getElementById("user").value;
+			var pw = document.getElementById("pass").value;
+			var cpw = document.getElementById("cpass").value;
+		    var em = document.getElementById("email").value;
+			var mb = document.getElementById("mobile").value;
+
+			var usercheck = /^[A-Za-z. ]{3,30}$/;
+			var passwordcheck = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+			var emailcheck = /^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+			var mobilecheck = /^[789][0-9]{9}$/;
+
+			// (?=.) yo vaneko atleast
+			// (?=.[A-Z])yo vaneko atleast A dekhi Z bichha ko ma euta hunu paryo
+
+
+			if(usercheck.test(us)){
+				document.getElementById('userror').innerHTML=" ";
+			}else{
+				document.getElementById('userror').innerHTML= "**Username is Invalid";
+				return false;
+			}
+
+
+			if(passwordcheck.test(pw)){
+				document.getElementById('passerror').innerHTML=" ";
+			}else{
+				document.getElementById('passerror').innerHTML= "**Password is Invalid ";
+				return false;
+			}
+
+
+			if(cpw.match(pw)){
+				document.getElementById('cpasserror').innerHTML=" ";
+			}else{
+				document.getElementById('cpasserror').innerHTML= "**Password is not Matching ";
+				return false;
+			}
+
+
+			if(emailcheck.test(em)){
+				document.getElementById('emailerror').innerHTML=" ";
+			}else{
+				document.getElementById('emailerror').innerHTML= "**Email Id is Invalid ";
+				return false;
+			}
+
+
+			if(mobilecheck.test(mb)){
+				document.getElementById('moberror').innerHTML=" ";
+			}else{
+				document.getElementById('moberror').innerHTML= "**Mobile Number is Invalid ";
+				return false;
+			}
+
+	}
+
+</script>
+
+
+
+</body>
+</html>
